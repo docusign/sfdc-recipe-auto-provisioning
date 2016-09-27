@@ -1,0 +1,136 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="framework-home-page">
+        <section id="home-auth-section">
+            <div><span id="home-auth">Checking authentication status...</span>
+                <button type="button" class="btn btn-default" id="unauthenticate" data-endpoint="auth"
+                        data-response="delete_reload">Delete Authentication</button></div>
+            <div id="auth-params">
+                <p>Use the <a href="https://admindemo.docusign.com/api-integrator-key" target="_blank">Administration tool</a>
+                    to create and update your Integration Keys (Client IDs). Use the Integrations/API and Keys section of the tool.</p>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#ds-legacy" aria-controls="ds-legacy" role="tab" data-toggle="tab">
+                        Service Integrations Authentication</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="nav-tabs-container">
+                    <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="ds-legacy">
+                        <h3>Legacy Header Authentication</h3>
+                        <p>Used for “Service integrations” that are not directed by an individual. Eg, an integration which autonomously sends out signing requests.
+                        <a href="https://docs.docusign.com/esign/guide/authentication/legacy_auth.html" target="_blank">Docs.</a></p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Server Settings</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label for="legacy_email">Email address</label>
+                                            <input type="email" class="form-control" id="legacy_email" name="legacy_email" placeholder="Email">
+                                            <small class="text-muted">Email address for your “Service Account.”</small>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="legacy_pw">Password</label>
+                                            <input type="password" class="form-control" id="legacy_pw" name="legacy_pw" placeholder="Password">
+                                            <small class="text-muted">Password for your “Service Account.”</small>
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="legacy_client_id">Integration key</label>
+                                            <input type="text" class="form-control" id="legacy_client_id" name="legacy_client_id" placeholder="Integration key">
+                                            <small class="text-muted">Integration key.</small>
+                                        </div>
+                                        <input type="hidden" name="type" value="ds_legacy" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-primary" data-endpoint="auth" data-response="auth" data-feedback="feedback-legacy">Submit and Authenticate</button>
+                                        </div>
+                                        <div class="col-md-12 feedback" id="feedback-legacy">
+                                            <h3>Working...&nbsp;&nbsp;&nbsp;<span></span></h3>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        <section id="busy"><div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div></section>
+        <section id="options-form">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Webhook Settings</h3>
+                </div>
+                <div class="panel-body">
+                    <p>This app uses the DocuSign webhook (Connect) feature to be proactively notified by the DocuSign
+                        platform whenever an envelope or envelope recipient’s status changes.</p>
+                    <p>To work, this app’s listener URL needs to be accessible from the public Internet. If your server is not on the public Internet,
+                    use a service such as <a href="https://ngrok.com/" target="_blank">ngrok</a> to establish a tunnel to your localhost.</p>
+                    <p>You can also open a “pinhole” in your firewall or use a DMZ network to receive the incoming notifications from DocuSign.</p>
+                    <p>More information about <a href="https://docs.docusign.com/esign/guide/usage/status_and_events.html"
+                           target="_blank">webhook status notifications.</a></p>
+                    <form class="margintop">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="url_begin">Webhook URL: beginning part of the URL</label>
+                                <input type="text" class="form-control" id="url_begin" name="url_begin">
+                                <small class="text-muted">HTTP or HTTPS can be used with the Demo/Sandbox system.
+                                    Optional: you can include a port number and/or part of the path,
+                                    eg. http://s1.example.com:45123/app.</small>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="url_end">Final part of the URL</label>
+                                <input type="text" class="form-control" id="url_end" name="url_end" readonly>
+                                <small class="text-muted">The last part of the webhook URL</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary" data-endpoint="webhook_status" data-response="webhook"
+                                        data-feedback="feedback-webhook" data-feedback2="feedback-webhook">Save</button>
+                                <button type="button" class="btn marginleft" data-close="options-form">Close</button>
+                            </div>
+                            <div class="col-md-12 feedback" id="feedback-webhook">
+                                <h3>Working...&nbsp;&nbsp;&nbsp;<span></span></h3>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default" style="display:none">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Authentication Information</h3>
+                </div>
+                <div class="panel-body" id="authentication-info">
+                    <p>Working...</p>
+                </div>
+            </div>
+
+        </section>
+        <section id="recipe-index">
+            <p>This application listens for incoming webhook (Connect) notifications about people who have been approved to be 
+               added to your Salesforce Community. This app will then provision the new people.</p>
+            <p>Information about each person added is saved on this application's log.</p>
+            <h3>View the incoming webhook notifications</h3>
+            <p><a href='webhook_status_page' class='btn btn-primary wh' role='button' target='_blank'>View Webhook Notifications</a> 
+                (A new tab/window will be used.)</p>
+        </section>
+    </div>
+{% endblock %}

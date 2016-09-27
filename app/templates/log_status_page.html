@@ -1,0 +1,161 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="api_logs" xmlns="http://www.w3.org/1999/html"></div>
+    <h2>API Logs</h2>
+    <form><p>When logging is activated, the DocuSign platform stores up to 50 log entries at a time. Download the log entries to enable more logging.
+    The platform logs all API calls for your account, including those from other clients. 
+    <input type="checkbox" id="omit-content" class="inline-checkbox" checked>Omit base64 and image bytes content</input>
+    </p></form>
+    
+    <form action="delete_logs" method="post">
+    <p id="status">Platform logging status: <span id="logging-status">tbd</span><span></span></span><a href="#" id="logging-status-refresh" class="marginleft">Refesh</a>
+        <button type="button" class="btn btn-primary marginleft" id="logging-download" data-feedback="feedback-download">Download Latest Logs</button>
+        <span id="feedback-download"></span><span></span>
+        <input type="submit" class="btn btn-danger marginleft" value="Delete Logs!" />
+    </p></form>
+
+    <div class="row fill" class="margintop">
+    	<div class="wrapper">
+      	  <div id="status_left" class="col-md-3">
+    		  <p><span id="working">Working...</span><span></span></p>
+    		  <ul id="toc" class="list-unstyled"></ul>
+    		  <ul class="margintop"><li>Click on an entry to view it</li></ul>
+    	  </div>
+      	  <div id="right_column" class="col-md-9">
+              <div id="item-feedback"></div>
+              <div id="item-wrapper">
+                  <div id="item-intro"></div>
+                  <div class="panel with-nav-tabs panel-primary">
+                      <div class="panel-heading">
+                          <ul class="nav nav-tabs">
+                              <li class="active"><a href="#tab1primary" data-toggle="tab" data-refresh="request">Request</a></li>
+                              <li><a href="#tab2primary" data-toggle="tab" data-refresh="response">Response</a></li>
+                              <li><a href="#tab3primary" data-toggle="tab">Raw</a></li>
+                          </ul>
+                      </div>
+                      <div class="panel-body">
+                          <div class="tab-content">
+                              <div class="tab-pane fade in active" id="tab1primary">
+                                  <div id="request-tab"></div>                                  
+                                  <div id="request-body-editor" class="log_editor"></div>                                
+                              </div>
+                              <div class="tab-pane fade" id="tab2primary">
+                                  <div id="response-tab"></div>
+                            	  <div id="response-body-editor" class="log_editor"></div>                                
+                              </div>
+                              <div class="tab-pane fade" id="tab3primary">
+                                  <p>Raw Request and Response <span class="marginleft" id="raw_download"></span></p>
+                                  <pre id="raw-tab"></pre>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>              
+    		  <p class="margintop">&nbsp;</p>
+    	  </div>
+    	<div>
+    </div>
+
+    {% raw %}
+    <script>
+        // Mustache template for toc entries
+        // See https://github.com/janl/mustache.js
+        //    success: boolean -- was the call successful?
+        //    url: the url for retrieving the call
+        //    file_name: the raw file_name. Can be used for sorting the entries
+        //    x_ray: false if no x_ray header. Otherwise the contents of the header
+        //    method: GET, POST, etc
+        //    request_url: the complete request url
+        //    method_name: the method name used in the log file name
+        //    head: the NOT uuencoded first 1500 bytes of the log entry
+        //    date_time: the call was made before this time
+    </script>
+    <script id="toc_item_template" type="x-tmpl-mustache">
+    <li class="toc_item" data-toggle="tooltip" data-placement="right" title="Request {{ request_url }}">
+    	<div class="sm-circle {{css_class}}"></div><span class="http-method">{{method}}</span>
+    	<p>{{ method_name }}</p>
+    </li>
+    </script>
+
+    <!-- Mustache template for displaying a log entry -->
+    <!-- XML in Ace editor, see http://stackoverflow.com/a/16147926/64904 -->
+    <script>
+        // data: {
+        //   raw
+        //   request: {
+        //      method
+        //      method_name: // from name of log file
+        //      date_time:   // request was before this time
+        //      url
+        //      headers
+        //      content_type
+        //      content_type_json: boolean // is the request content-type JSON?
+        //      content_type_multipart: boolean
+        //      json_problem: false or an error message // Does the JSON parse?
+        //      body
+        //      show_editor
+        //      json // the request, parsed into a json object (iff json_ok) 
+        //   }
+        //   response: {
+        //      success:  // boolean, a successful request?
+        //      success_class = success ? "success-circle" : "failure-circle"
+        //      status:   // eg "201 Created"
+        //      headers
+        //      content_type
+        //      content_type_json: boolean // is the response content-type JSON?
+        //      content_type_multipart: boolean
+        //      json_problem: false or an error message // Does the JSON parse?
+        //      body
+        //      show_editor
+        //      json // the response, parsed into a json object (iff json_ok)
+        //    }
+        // }
+    </script>
+        
+    <script id="item-intro-template" type="text/x-handlebars-template">        
+        <h4><span class="{{response.success_class}} sm-circle"></span><span>{{response.status}}.</span> 
+            <i>Method: {{request.method_name}}</i></h4>
+        <p>URL: <b>{{request.method}}</b> {{request.url}}</p>
+    </script>
+    
+    <script id="request-tab-template" type="text/x-handlebars-template">        
+      <p><a data-toggle="collapse" href="#request-headers" aria-expanded="false" aria-controls="collapseExample">
+          + Headers</a></p>
+      <div class="collapse" id="request-headers">
+          <div class="well">
+              <p>Request Headers<pre>{{request.headers}}</pre></p>
+          </div>
+      </div>
+
+      {{#if request.body }}
+          {{#if request.content_type_multipart}}<p>Multipart body content. Please use the <b>Raw</b> tab to see the content.</p>{{/if}}
+          {{#if request.content_type_json }}
+              {{#if request.json_problem }}<h4>{{request.json_problem}}</h4>{{else}}<p>JSON Request Body</p>{{/if}}    
+          {{ else }}
+              <p>Request body content type: {{request.content_type}}</p>
+          {{/if}}                        
+      {{ else }}<p>No request body.</p>{{/if}}
+    </script>
+        
+    <script id="response-tab-template" type="text/x-handlebars-template"> 
+      <p><a data-toggle="collapse" href="#response-headers" aria-expanded="false" aria-controls="collapseExample">
+          + Headers</a></p>
+      <div class="collapse" id="response-headers">
+          <div class="well">
+              <p>Response Headers<pre>{{response.headers}}</pre></p>
+          </div>
+      </div>
+
+      {{#if response.body }}
+          {{#if response.content_type_multipart}}<p>Multipart body content. Please use the <b>Raw</b> tab to see the content.</p>{{/if}}
+          {{#if response.content_type_json }}
+              {{#if response.json_problem }}<h4>{{response.json_problem}}</h4>{{else}}<p>JSON Response Body</p>{{/if}}    
+          {{ else }}
+              <p>Response body content type: {{response.content_type}}</p>
+          {{/if}}                        
+      {{ else }}<p>No response body.</p>{{/if}}
+    </script>                
+    {% endraw %}
+{% endblock %}

@@ -103,3 +103,11 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+.idea/esignature-recipes-python.iml
+
+.DS_Store
+
+.idea/misc.xml
+
+.idea/modules.xml

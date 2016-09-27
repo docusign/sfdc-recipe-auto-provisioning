@@ -1,0 +1,168 @@
+body.recipes {
+  padding-top: 50px;
+}
+.intro {
+  padding: 40px 15px;
+  text-align: center;
+}
+#recipe-index li {margin-top: .3em;}
+.margintop {margin-top: 1.7em;}
+.marginleft {margin-left: 2.5em;}
+
+#home-auth-section {background-color: #d7e5fb; padding: 30px}
+#auth-params {margin-top: 20px; display:none;}
+#unauthenticate {display:none; margin-left: 20px;}
+.feedback, #options {display: none;}
+span.feedback {margin-left:2em;}
+.alert {margin-top:20px;}
+.newdata {font-style: italic;} /* value of the data has changed! */
+#status_left {background-color: #B9CEF3;}	
+#working {margin-top: 20px;}
+.workinghide {color: #B9CEF3;}
+.workingshow {color: black;}
+#options-form {margin-top: 3em; display: none;}
+#options-form .panel-body {background-color: #d7e5fb;}
+.navbar {margin-bottom: 0px;}
+a.wh {margin-right:1.5em;} /* webhook button */
+
+input.inline-checkbox {margin-right:0.5em;margin-left:1.5em;} /* API Logging checkbox */
+.success-circle {background: green;}
+.failure-circle {background: darkred;}
+.sm-circle {width: 1em; height: 1em; border-radius: 50%; display: inline-block;  margin-right: 1.5em;}
+.tooltip-inner {max-width: 400px; text-align: left;}
+
+img.bordered {
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 2px solid blueviolet;
+  }
+
+.toc_item {
+	border-bottom-color: white;
+	border-bottom-width: .2em;
+	border-bottom-style: solid;
+	margin-bottom: .4em;
+	padding-left: 1em;
+	padding-bottom: .4em;
+	padding-top: .4em;
+}
+
+.toc_item:hover {background-color: #85A8EA; cursor: pointer;}
+.toc-instructions {
+    margin-top: 2em; color: blueviolet; font-style: italic;} /* Instructions for user */
+
+#editor {height: 300px;}
+.log_editor {height: 400px; display:none;}
+#item-wrapper {display:none;}
+
+@media (max-width: 991px) { /* add some vertical padding for smaller screens */
+  [class*="col-"]{
+      margin-bottom: 15px;
+  }
+}
+
+/* From http://tobiasahlin.com/spinkit/ */
+.spinner {
+  margin: 100px auto;
+  width: 150px;
+  height: 140px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: blueviolet;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+/* tabs from http://bootsnipp.com/snippets/featured/panels-with-nav-tabs */
+.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+}
+.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+.panel.with-nav-tabs .nav-justified{
+	margin-bottom: -1px;
+}
+/*** PANEL PRIMARY ***/
+.with-nav-tabs.panel-primary .nav-tabs > li > a,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+    color: #fff;
+}
+.with-nav-tabs.panel-primary .nav-tabs > .open > a,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+	color: #fff;
+	background-color: #3071a9;
+	border-color: transparent;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+	color: #428bca;
+	background-color: #fff;
+	border-color: #428bca;
+	border-bottom-color: transparent;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #428bca;
+    border-color: #3071a9;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+    color: #fff;   
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+    background-color: #3071a9;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+    background-color: #4a9fe9;
+}
+

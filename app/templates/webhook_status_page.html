@@ -1,0 +1,62 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Envelope Notifications via a Webhook</h2>
+    
+    <div class="row fill">
+    	<div class="wrapper">
+      	  <div id="status_left" class="col-md-3">
+    		  <p id="working">Working</p>
+    		  <ul id="toc" class="list-unstyled"></ul>
+    		  <ul class="margintop"><li>Click on an entry to view it</li></ul>
+    	  </div>
+      	  <div id="right_column" class="col-md-9">
+    		  <div id="xml_info">
+      		  	<div id="countdown"><h2>Waiting for an envelope… <span id="counter"></span></h2></div>
+    		  </div>
+    		  <div id="editor"></div>
+    		  <p class="margintop">&nbsp;</p>
+    	  </div>
+    	<div>
+    </div>
+    
+    <script>ds_params = {{data.ds_params|safe}};</script>
+    
+    {% raw %}
+    <!-- Mustache template for toc entries -->
+    <!-- See https://github.com/janl/mustache.js -->
+    <script id="toc_item_template" type="x-tmpl-mustache">
+    <li class="toc_item">
+    	<h4 class="{{envelope_status_class}}">Envelope: {{envelope_status}}</h4>
+    	{{#recipients}}
+    		<p>{{type}}: {{user_name}}<br/>
+    			<span class="{{status_class}}">Status: {{status}}</span>
+    		</p>
+    	{{/recipients}}
+    </li>
+    </script>
+
+    <!-- Mustache template for displaying xml file -->
+    <!-- XML in Ace editor, see http://stackoverflow.com/a/16147926/64904 -->
+    <script id="xml_file_template" type="x-tmpl-mustache">
+    	<h3>XML Notification Content</h3>
+    	<h5 class="{{envelope_status_class}}">Envelope status: {{envelope_status}}</h5>
+    	<p class="margintop">Recipients</p>
+    	<ul>
+    	{{#recipients}}
+    		<li>{{type}}: {{user_name}} <span class="{{status_class}}">Status: {{status}}</span></li>
+    	{{/recipients}}
+    	</ul>
+    	<h5><a href='{{xml_url}}' target='_blank'>Download the XML file</a></h5>
+    	{{#documents.length}}
+    		<p>Documents<ul>
+    			{{#documents}}
+    				<li>Document ID {{document_ID}}: {{name}} <a href='{{url}}' target='_blank'>Download</a></li>
+    			{{/documents}}
+    		</ul></p>
+    	{{/documents.length}}
+    </script>
+    {% endraw %}
+    
+{% endblock %}
