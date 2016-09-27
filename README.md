@@ -61,7 +61,7 @@ Create and configure the partner community on Salesforce.
 * As the Business Development signer, create or lookup a partner account in Salesforce for the new partner. 
 * Enable the account as a partner account: Select "Enable As Partner" from the account's "Manage External Account" menu button.
 
-![Enable As Partner](app/static/images/account_enable_as_partner.png)
+![Enable As Partner](docs/images/account_enable_as_partner.png)
 
 * Copy the complete url for the partner to the DocuSign envelope.
 * Finish signing the envelope.
