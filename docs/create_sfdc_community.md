@@ -13,7 +13,7 @@ Setting up these accounts is free and no credit card is needed.
   
   You can have multiple usernames that use the same email address. For example, if your email is Larry@example.com, you could create multiple SFDC Developer environments, with usernames larry@ex.com, larry2@ex.com, etc
 * Confirm your email address with SFDC and set your password
-* Login to Salesforce at [login.salesforce.com(https://login.salesforce.com/)
+* Login to Salesforce at [login.salesforce.com](https://login.salesforce.com/)
 
 ### Step 2. Install DocuSign for Salesforce
 * Goto the [AppExchange page for DocuSign on Salesforce](https://appexchange.salesforce.com/listingDetail?listingId=a0N30000001taX4EAI)
@@ -50,8 +50,7 @@ Setting up these accounts is free and no credit card is needed.
   * The **Lightning Experience Migration Assistant** will open
   
 ![Lightning Migration](images/sfdc_lightning_1.png)
-
-*  
+ 
   * Scroll down the page to the last item and **Enable** the **Lightning Experience**. Confirm via the popup.
   
 ![Enable Lightning](images/sfdc_lightning_2.png)
