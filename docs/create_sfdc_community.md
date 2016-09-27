@@ -32,7 +32,7 @@ Setting up these accounts is free and no credit card is needed.
   * Enter any easy domain name in the form.
   * Agree to the terms and click **Register Domain**
   
-![My Domain](docs/images/sfdc_my_domain.png)
+![My Domain](images/sfdc_my_domain.png)
 
 * Assign a role to your own user name. Some operations can only be completed if the user has a role.
   * Click Setup
@@ -42,18 +42,18 @@ Setting up these accounts is free and no credit card is needed.
   * Choose a value for the **Role** entry. Which role you pick is not important.
   * Click Save
   
-![Add role](docs/images/sfdc_add_role.png)
+![Add role](images/sfdc_add_role.png)
 
 * Enable Lightning Experience
   * Click Setup
   * In the left navigation section, click **Lightning Experience**
   * The **Lightning Experience Migration Assistant** will open
   
-![Lightning Migration](docs/images/sfdc_lightning_1.png)
+![Lightning Migration](images/sfdc_lightning_1.png)
 
   * Scroll down the page to the last item and **Enable** the **Lightning Experience**, Confirm via the popup.
   
-![Enable Lightning](docs/images/sfdc_lightning_2.png)
+![Enable Lightning](images/sfdc_lightning_2.png)
 
 
   
