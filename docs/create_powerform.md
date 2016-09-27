@@ -9,7 +9,7 @@ In DocuSign, Powerforms are created *from* templates. So the first step is to cr
 * Login to your DocuSign demo (developer sandbox) account
 * Click Templates
 * Click New > Create Template
-  * Name: World Wide Co Partner Agreement
+  * Name: World Wide Corp Partner Agreement
   * Description: Powerform filled in by prospective partner
 * Upload the Word document
 * Set Recipients:
@@ -31,27 +31,27 @@ In DocuSign, Powerforms are created *from* templates. So the first step is to cr
     * Make the field's width wider
 * Add a text field for the Partner contact first name:
     * Place the field by the partner contact first name heading
-    * Change Formatting > Size to 11
+    * Change Formatting > Size to 12
     * Change Data Label to pfname
     * Make the field's width wider
-* Add Name field for the Partner contact last name:
+* Add a Name field for the Partner contact last name:
     * Place the field by the partner contact last name heading
-    * Change Formatting > Size to 11
+    * Change Formatting > Size to 12
     * Change Data Label to plname
     * Make the field's width wider
-* Add signature field for the Partner:
+* Add a signature field for the Partner:
     * Place the field by the partner signature heading
-* Add date signed field for the Partner date:
+* Add a date signed field for the Partner date:
     * Place the field by the partner date heading
-    * Change Formatting > Size to 11
+    * Change Formatting > Size to 12
 * Switch the "Add fields for" drop down menu at the top of the screen to the second signer
-* Add signature field for World Wide Corp:
+* Add a signature field for World Wide Corp signer:
     * Place the field by the signature heading
     * Change Data Label to wsig
-* Add date signed field for the World Wide Corp date:
+* Add a date signed field for the World Wide Corp date:
     * Place the field by the date heading
-    * Change Formatting > Size to 11
-* Add text field for the Partner SFDC url:
+    * Change Formatting > Size to 12
+* Add a text field for the Partner SFDC url:
     * Place the field by the heading
     * Change Formatting > Size to 12
     * Change Data Label to wpartner
@@ -61,7 +61,7 @@ In DocuSign, Powerforms are created *from* templates. So the first step is to cr
 * Choose Use > Create Power Form for the template.
 * The Create Powerform form is shown.
     * Add "To join the partner program, please fill in and sign the form." to the Instructions for Signers field
-    * Use the default for the other entries in the form
+    * Use the defaults for the other form fields
     * Click Create
 * You will receive a url for the Powerform. Make note of it since that url is used to start the process.
 
