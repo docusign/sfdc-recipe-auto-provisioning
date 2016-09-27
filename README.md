@@ -14,8 +14,17 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 * Using the SFDC REST API, this application provisions the new partner in the World Wide Corp partner community. It first creates a contact record, then a partner community user record.
 * The application sends an email that notifies the new partner that they can now generate a password and then login to the community.
 
+## Installation
 
-## Run the app locally
+### Step 1. Set up the Salesforce Community
+
+Create and configure the partner community on Salesforce.
+
+### Step 2. Create the DocuSign Powerform
+
+[Create the Powerform on your DocuSign Developer account.](docs/create_powerform.md)
+
+### Step 3. Install and run the app locally
 
 1. Install a recent version of Python 2.x, 2.7.11 or later.
 1. Install pip
