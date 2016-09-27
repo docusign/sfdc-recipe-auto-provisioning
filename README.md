@@ -46,15 +46,17 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
    1. Click Save
    
 ## Test the app
-1. Fill in the PowerForm and sign the Powerform as the new partner. Use a valid email address.
-1. As the Business Development signer, log into DocuSign. You should see the envelope waiting for you to sign.
-1. Open the envelope and start the signing process. 
-1. As the Business Development signer, create or lookup a partner account in Salesforce for the new partner. 
-1. Enable the account as a partner account: Select "Enable As Partner" from the account's "Manage External Account" menu button.
-   ![Enable As Partner](app/static/images/account_enable_as_partner.png)
-1. Copy the complete url for the partner to the DocuSign envelope.
-1. Finish signing the envelope.
-1. Monitor the app's log. You should see log entries similar to:
+* Fill in the PowerForm and sign the Powerform as the new partner. Use a valid email address.
+* As the Business Development signer, log into DocuSign. You should see the envelope waiting for you to sign.
+* Open the envelope and start the signing process. 
+* As the Business Development signer, create or lookup a partner account in Salesforce for the new partner. 
+* Enable the account as a partner account: Select "Enable As Partner" from the account's "Manage External Account" menu button.
+
+![Enable As Partner](app/static/images/account_enable_as_partner.png)
+
+* Copy the complete url for the partner to the DocuSign envelope.
+* Finish signing the envelope.
+* Monitor the app's log. You should see log entries similar to:
 
 ```
 ### ### ### PowerForm sender (new partner): Jim Jones <jim.jones@example.com>
@@ -65,7 +67,7 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 ### ### ### ################## Completed SFDC provisioning
 ```
 
-The new partner should also receive an email with instructions on how to reset their password and login to the partner community.
+* The new partner should also receive an email with instructions on how to reset their password and login to the partner community.
 
 ## Have a question? Pull request?
 If you have a question about the Signature REST API, please use StackOverflow and tag your question with `docusignapi`
