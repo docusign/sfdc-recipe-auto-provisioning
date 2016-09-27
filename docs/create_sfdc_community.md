@@ -51,7 +51,8 @@ Setting up these accounts is free and no credit card is needed.
   
 ![Lightning Migration](images/sfdc_lightning_1.png)
 
-  * Scroll down the page to the last item and **Enable** the **Lightning Experience**, Confirm via the popup.
+*  
+  * Scroll down the page to the last item and **Enable** the **Lightning Experience**. Confirm via the popup.
   
 ![Enable Lightning](images/sfdc_lightning_2.png)
 
