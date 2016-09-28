@@ -45,11 +45,11 @@ To find the value:
 * The **User** detail page will open.
 * Click the **Profile** field's link value. In this screenshot example, click on **Partner Community Login User**
 
-![Profile link](images/sfdc_user_profile.png)
+![Profile link](docs/images/sfdc_user_profile.png)
 
 * The detail page for the Profile will open. Make note of the last part of the url, the part that starts with 003. That id is the profile id that you will add to the ds_cache_defaults file.
 
-![Profile id](images/sfdc_profile_id.png)
+![Profile id](docs/images/sfdc_profile_id.png)
 
 Note: the ds_cache_defaults file requires your DocuSign and SFDC secret account authentication information. Don't allow the file to be stored in a git repo.
 
