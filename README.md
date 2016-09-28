@@ -47,11 +47,13 @@ To find the value:
 
 ![Profile link](docs/images/sfdc_user_profile.png)
 
-* The detail page for the Profile will open. Make note of the last part of the url, the part that starts with 003. That id is the profile id that you will add to the ds_cache_defaults file.
+* The detail page for the Profile will open. Make note of the last part of the url, the part that starts with 00e. That id is the profile id that you will add to the ds_cache_defaults file.
 
 ![Profile id](docs/images/sfdc_profile_id.png)
 
-Note: the ds_cache_defaults file requires your DocuSign and SFDC secret account authentication information. Don't allow the file to be stored in a git repo.
+* Your SFDC security token is available from SFDC. At the top navigation bar go to your name > My Settings > Personal > Reset My Security Token. A new Security Token will be emailed to you.
+
+**Note: the ds_cache_defaults file requires your DocuSign and SFDC secret account authentication information. Don't allow the file to be stored in a git repo.**
 
 #### Start the app
 1. `python run.py` # starts the application on port 5000
