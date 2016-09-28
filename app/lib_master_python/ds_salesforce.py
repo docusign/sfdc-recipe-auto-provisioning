@@ -5,9 +5,20 @@ import sys; reload(sys); sys.setdefaultencoding('utf8')
 import os, base64, json, requests, logging, random
 from app.lib_master_python import ds_recipe_lib
 from urlparse import urlparse
-from simple_salesforce import Salesforce
 from string import Template
-import beatbox
+from simple_salesforce import (Salesforce,
+    SalesforceError,
+    SalesforceMoreThanOneRecord,
+    SalesforceExpiredSession,
+    SalesforceRefusedRequest,
+    SalesforceResourceNotFound,
+    SalesforceGeneralError,
+    SalesforceMalformedRequest)
+
+
+# If using a local copy:
+# sys.path.insert(1, os.path.join(sys.path[0], '../simple_salesforce'))
+# from simple_salesforce import Salesforce
 
 # Constants
 html_email_template = 'app/templates/welcome_email.html'   
@@ -63,7 +74,25 @@ def provision_community_member(cache, email, first_name, last_name, sfdc_account
     sf = Salesforce(username = cache['sfdc_username'], password = cache['sfdc_pw'], security_token = cache['sfdc_security_token'])
     
     # Create the contact
-    r = sf.Contact.create ({'AccountID': account_id, 'LastName': last_name, 'FirstName': first_name, 'Email': email})
+    try:
+        r = sf.Contact.create ({'AccountID': account_id, 'LastName': last_name, 'FirstName': first_name, 'Email': email})
+    except (
+        SalesforceMoreThanOneRecord,
+        SalesforceMalformedRequest,
+        SalesforceExpiredSession,
+        SalesforceRefusedRequest,
+        SalesforceResourceNotFound,
+        SalesforceGeneralError) as e:
+            ds_recipe_lib.log("##################")
+            ds_recipe_lib.log("##################")
+            ds_recipe_lib.log("################## ERROR creating contact for account {}".format(account_id))
+            ds_recipe_lib.log( "          url: " + e.url)
+            ds_recipe_lib.log( "      content: " + str(e.content)) # This is actually a JSON string. It could be decoded and used.
+                # Example: [{u'errorCode': u'LICENSE_LIMIT_EXCEEDED', u'fields': [], u'message': u'License Limit Exceeded'}, {u'errorCode': u'LICENSE_LIMIT_EXCEEDED', u'fields': [], u'message': u'license limit exceeded'}]
+            ds_recipe_lib.log( "       status: " + str(e.status))
+            ds_recipe_lib.log( "resource_name: " + e.resource_name)
+            return 'Problem creating the contact: ' + str(e.content)
+    
     if r['success']:
         ds_recipe_lib.log('Created contact for account {}!'.format(account_id))
         contact_id = r['id']
@@ -76,7 +105,11 @@ def provision_community_member(cache, email, first_name, last_name, sfdc_account
     ### In production, you'd want to automatically handle a username clash with an existing user,
     ### and then try alternate usernames for the new user.
     
-    r = sf.User.create ({
+    ## To be done: if there's an error while creating the contact's user record then 
+    ## we should delete the contact? Or maybe leave it for manual processing?
+    
+    try:
+        r = sf.User.create ({
                 'ContactId': contact_id, 
                 'Email': email, 
                 'LastName': last_name, 
@@ -93,6 +126,23 @@ def provision_community_member(cache, email, first_name, last_name, sfdc_account
                 'LanguageLocaleKey': cache['sfdc_language_locale_key'],
                 'ProfileId': cache['sfdc_profile_id']
                 })
+    except (
+        SalesforceMoreThanOneRecord,
+        SalesforceMalformedRequest,
+        SalesforceExpiredSession,
+        SalesforceRefusedRequest,
+        SalesforceResourceNotFound,
+        SalesforceGeneralError) as e:
+            ds_recipe_lib.log("##################")
+            ds_recipe_lib.log("##################")
+            ds_recipe_lib.log("################## ERROR creating the user")
+            ds_recipe_lib.log( "          url: " + e.url)
+            ds_recipe_lib.log( "      content: " + str(e.content)) # This is actually a JSON string. It could be decoded and used.
+                # Example: [{u'errorCode': u'LICENSE_LIMIT_EXCEEDED', u'fields': [], u'message': u'License Limit Exceeded'}, {u'errorCode': u'LICENSE_LIMIT_EXCEEDED', u'fields': [], u'message': u'license limit exceeded'}]
+            ds_recipe_lib.log( "       status: " + str(e.status))
+            ds_recipe_lib.log( "resource_name: " + e.resource_name)
+            return 'Problem creating the contact: ' + str(e.content)
+
     if r['success']:
         user_id = r['id']
         ds_recipe_lib.log('Created user record! ID = ' + user_id)
