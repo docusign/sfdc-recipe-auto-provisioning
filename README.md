@@ -26,20 +26,49 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 
 ### Step 3. Install and run the app locally
 
+#### Install the software
 1. Install a recent version of Python 2.x, 2.7.11 or later.
 1. Install pip
 1. Clone this repo to your computer
 1. `cd` to the repo’s directory
 1. `pip install -r requirements.txt` # installs the application’s requirements
-1. Update the file app/ds_cache_defaults.py with your settings
+
+#### Settings
+The configuration file is app/ds_cache_defaults.py
+
+In addition to usernames and password, it requires the **profile_id** from SFDC that will be used for new members of your community. The value is stored in the file, in field *sfdc_profile_id*.
+
+To find the value:
+
+* Open a Contact record for someone you have manually added to the community.
+* Use the **Manage External User** dropdown menu and choose **View Partner User**
+* The **User** detail page will open.
+* Click the **Profile** field's link value. In this screenshot example, click on **Partner Community Login User**
+
+![Profile link](images/sfdc_user_profile.png)
+
+* The detail page for the Profile will open. Make note of the last part of the url, the part that starts with 003. That id is the profile id that you will add to the ds_cache_defaults file.
+
+![Profile id](images/sfdc_profile_id.png)
+
+Note: the ds_cache_defaults file requires your DocuSign and SFDC secret account authentication information. Don't allow the file to be stored in a git repo.
+
+#### Start the app
 1. `python run.py` # starts the application on port 5000
 1. Use a browser to load [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-1. Make the application available to the internet so it can receive incoming webhook entries from DocuSign:
+
+#### Enable access from the internet
+Make the application available to the internet so it can receive incoming webhook entries from DocuSign:
+
    1. install [ngrok](https://ngrok.com)
    1. Start ngrok: `ngrok http 5000`  # ngrok will create a unique forwarding address on the internet. That address will forward to port 5000 on your machine.
    1. Test the address that ngrok gives you (eg https://ff34aaaa.ngrok.io) in your browser. You should see the app.
    1. Record the address. You'll use it in the next step.
-1. Create a Connect webhook subscription in your DocuSign Developer Account:
+
+#### Create a Connect webhook subscription
+
+Create a Connect webhook subscription in your DocuSign Developer Account:
+
    1. Open the Admin tool.
    1. Choose Integrations / Connect from the left navigation list.
    1. Choose Add Configuration / Custom
