@@ -80,13 +80,13 @@ Create a Connect webhook subscription in your DocuSign Developer Account:
    1. Enable log: check
    1. Require Acknowledgement: check
    1. Include -- check "Time Zone Information", "Sender Account as Custom Field", "Document Fields"
-   1. Associated Users: choose the specific user who was set as the Powerform's signer.
+   1. Associated Users: choose the specific user who was set as the Powerform's sender.
    1. Trigger Events -- check just "Document Signed/Completed"
    1. Do not check any other entries
    1. Click Save
    
 ## Test the app
-* Fill in the PowerForm and sign the Powerform as the new partner. Use a valid email address.
+* Fill in the PowerForm and sign it as the new partner. Use a valid email address.
 * As the Business Development signer, log into DocuSign. You should see the envelope waiting for you to sign.
 * Open the envelope and start the signing process. 
 * As the Business Development signer, create or lookup a partner account in Salesforce for the new partner. 
