@@ -18,7 +18,7 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 
 ### Step 1. Set up the Salesforce Community
 
-Create and configure the partner community on Salesforce.
+[Create and configure the partner community on Salesforce.](docs/create_sfdc_community.md)
 
 ### Step 2. Create the DocuSign Powerform
 
