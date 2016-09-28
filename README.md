@@ -94,7 +94,7 @@ Create a Connect webhook subscription in your DocuSign Developer Account:
 
 ![Enable As Partner](docs/images/account_enable_as_partner.png)
 
-* Copy the complete url for the partner to the DocuSign envelope.
+* Copy the complete Salesforce url for the partner's acccount to the DocuSign envelope.
 * Finish signing the envelope.
 * Monitor the app's log. You should see log entries similar to:
 
@@ -114,6 +114,9 @@ You may need to enable TLS 1.0 access to your SFDC Developer Environment if your
 
 * Click Settings, and enter "critical" in the Quik Find box. Select **Critical Updates**
 * Deactivate the Critical Update "Require TLS 1.1 or higher for HTTPS connections"
+
+Or better, upgrade your Python environment to the latest 2.7 release and libraries. 
+This app *does* use TLS 1.1 correctly with Salesforce if the app's stack has been updated.
 
 ## Have a question? Pull request?
 If you have a question about the Signature REST API, please use StackOverflow and tag your question with `docusignapi`
