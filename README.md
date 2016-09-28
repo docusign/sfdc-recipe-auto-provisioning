@@ -109,6 +109,12 @@ Create a Connect webhook subscription in your DocuSign Developer Account:
 
 * The new partner should also receive an email with instructions on how to reset their password and login to the partner community.
 
+### TLS issues
+You may need to enable TLS 1.0 access to your SFDC Developer Environment if your Python installation does not support TLS 1.1. To do so:
+
+* Click Settings, and enter "critical" in the Quik Find box. Select **Critical Updates**
+* Deactivate the Critical Update "Require TLS 1.1 or higher for HTTPS connections"
+
 ## Have a question? Pull request?
 If you have a question about the Signature REST API, please use StackOverflow and tag your question with `docusignapi`
 

@@ -55,7 +55,7 @@ In DocuSign, Powerforms are created *from* templates. So the first step is to cr
     * Place the field by the heading
     * Change Formatting > Size to 12
     * Change Data Label to wpartner
-    * Make the field's width wider
+    * Make the field's wider and tall enough to accomodate three lines of text.
 * Click Save and Close
 * You will now see the list of templates for your account.
 * Choose Use > Create Power Form for the template.
