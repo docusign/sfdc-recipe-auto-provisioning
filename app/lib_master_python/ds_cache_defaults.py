@@ -21,6 +21,7 @@ defaults = {
     # For the following, see https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_user.htm 
     'sfdc_user_type': 'Partner', # or Power Partner for partners
     'sfdc_profile_id': None, # Get the ID (from the URL) for the new members' profile. Eg "Partner Community Login User"
+                             # See https://github.com/docusign/sfdc-recipe-auto-provisioning#settings
     'sfdc_time_zone_sid_key': 'America/Los_Angeles',
     'sfdc_locale_sid_key': 'en_US',
     'sfdc_email_encoding_key': 'ISO-8859-1', 
@@ -37,6 +38,8 @@ defaults = {
     'template_name': "World Wide Co Partner Agreement" # name of your PowerForm's template
 }
 
+
+
 # Note
 # For the user object, fields TimeZoneSidKey, LocaleSidKey, ProfileId,
 # EmailEncodingKey, and LanguageLocaleKey are all required. But how
@@ -50,7 +53,6 @@ defaults = {
 # sf = Salesforce(username = cache['sfdc_username'], password = cache['sfdc_pw'], security_token = cache['sfdc_security_token'])
 # sf.User.get('00561000001veBp') # The existing User record ID
 # Then use https://pythoniter.appspot.com/ to pretty print the resulting Python dict
-
 
 
 ########################################################################

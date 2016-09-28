@@ -36,7 +36,7 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 #### Settings
 The configuration file is app/ds_cache_defaults.py
 
-In addition to usernames and password, it requires the **profile_id** from SFDC that will be used for new members of your community. The value is stored in the file, in field *sfdc_profile_id*.
+In addition to usernames and passwords, it requires the **profile_id** from SFDC that will be used for new members of your community. The value is stored in the file, in field *sfdc_profile_id*.
 
 To find the value:
 
