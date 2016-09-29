@@ -118,18 +118,21 @@ Salesforce Developer Environment includes five user licenses for Partner Communi
 
 After you hit the limit, you'll need to delete some existing users if you wish to continue testing. 
 
-To delete a user, you'll first disable their user record, then the contact.
+To delete a user, you'll first disable their user record, then delete the contact.
 
 * Search for the person, or use the Contacts tab to find them.
 * Open their **Contact Detail** page. 
-* First, delete their **User** record by using the **Manage External User** menu button. Choose **Disable Partner User** and confirm.
-  ![Disable user](docs/images/disable_user.png)
+* First, delete their **User** record by using the **Manage External User** menu button. 
+  Choose **Disable Partner User** and confirm.
+
+![Disable user](docs/images/disable_user.png)
+
 * Then use the **Delete** button on the Contact page to remove the contact record.
 
 ### TLS issues
 You may need to enable TLS 1.0 access to your SFDC Developer Environment if your Python installation does not support TLS 1.1. To do so:
 
-* Click Settings, and enter "critical" in the Quik Find box. Select **Critical Updates**
+* Click Settings, and enter "critical" in the Quick Find box. Select **Critical Updates**
 * Deactivate the Critical Update "Require TLS 1.1 or higher for HTTPS connections"
 
 Or better, upgrade your Python environment to the latest 2.7 release and libraries. 
