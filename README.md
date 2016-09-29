@@ -18,7 +18,11 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 
 ### Step 1. Set up the Salesforce Community
 
-[Create and configure the partner community on Salesforce.](docs/create_sfdc_community.md)
+[Create and configure the partner community on Salesforce.](docs/create_sfdc_community.md) This step includes:
+
+* Creating a Salesforce Developer Environment
+* Installing DocuSign for Salesforce
+* Configuring a Salesforce Partner Community
 
 ### Step 2. Create the DocuSign Powerform
 
@@ -108,6 +112,19 @@ Create a Connect webhook subscription in your DocuSign Developer Account:
 ```
 
 * The new partner should also receive an email with instructions on how to reset their password and login to the partner community.
+
+## User Licensing Limits
+Salesforce Developer Environment includes five user licenses for Partner Communities.
+
+After you hit the limit, you'll need to delete some existing users if you wish to continue testing. 
+
+To delete a user, you'll first disable their user record, then the contact.
+
+* Search for the person, or use the Contacts tab to find them.
+* Open their **Contact Detail** page. 
+* First, delete their **User** record by using the **Manage External User** menu button. Choose **Disable Partner User** and confirm.
+  ![Disable user](docs/images/disable_user.png)
+* Then use the **Delete** button on the Contact page to remove the contact record.
 
 ### TLS issues
 You may need to enable TLS 1.0 access to your SFDC Developer Environment if your Python installation does not support TLS 1.1. To do so:
