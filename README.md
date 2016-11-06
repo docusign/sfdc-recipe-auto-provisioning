@@ -57,6 +57,8 @@ To find the value:
 
 * Your SFDC security token is available from SFDC. At the top navigation bar go to your name > My Settings > Personal > Reset My Security Token. A new Security Token will be emailed to you.
 
+* Obtain a free account from [www.mailgun.com](http://www.mailgun.com) It is used to send a welcome message to the new member of your community.
+
 **Note: the ds_cache_defaults file requires your DocuSign and SFDC secret account authentication information. Don't allow the file to be stored in a git repo.**
 
 #### Start the app on Heroku
