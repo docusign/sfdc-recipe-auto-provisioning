@@ -28,7 +28,7 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 
 [Create the Powerform on your DocuSign Developer account.](docs/create_powerform.md)
 
-### Step 3. Install and run the app on Heroku or locally
+### Step 3. Install and run the app on Heroku
 
 #### Install the software
 1. Install a recent version of Python 2.x, 2.7.11 or later.
@@ -67,25 +67,12 @@ To find the value:
    Your webhook listener address will be xxx-sfdc-autoprovision.herokuapp.com/webhook
 1. Obtain a free or paid Heroku account if you don't have one.
 1. set up your Heroku credentials for the Heroku Command Line Interface tools
-1. run the command ./build_heroku.sfdc-recipe-auto-provisioning.sh .. xxx-sfdc-autoprovision
+1. run the command `./build_heroku.sfdc-recipe-auto-provisioning.sh .. xxx-sfdc-autoprovision`
    Add -force to over-write the staging directory.
 1. The script will create a new staging directory for your auto-provision app on your machine, then run it on Heroku.
    Note that the lxml step takes several minutes since it requires a compilation of the source.
 
-Record the webhook listener url. You'll use it in the next step: *Create a Connect web hook subscription*
-
-#### Alternate: Start the app locally with access from the internet
-1. `python run.py` # starts the application on port 5000
-1. Use a browser to load [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
-Make the application available to the internet so it can receive incoming webhook entries from DocuSign:
-
-1. install [ngrok](https://ngrok.com)
-1. **Important note:** ngrok enables anyone on the internet to bypass your firewall and directly access your machine. 
-   It is imperative that you consult with your infosec or IT department before using it!
-1. Start ngrok: `ngrok http 5000`  # ngrok will create a unique forwarding address on the internet. That address will forward to port 5000 on your machine.
-1. Test the address that ngrok gives you (eg https://ff34aaaa.ngrok.io) in your browser. You should see the app.
-1. Record the address. You'll use it in the next step.
+Record the webhook listener url. You'll use it in the next step.
 
 #### Create a Connect web hook subscription
 
@@ -104,6 +91,8 @@ Create a Connect webhook subscription in your DocuSign Developer Account:
    1. Trigger Events -- check just "Document Signed/Completed"
    1. Do not check any other entries
    1. Click Save
+   
+If you run the app locally, then you must enable the DocuSign event notification requests to reach your local machine--your *listener url* must be accessible from the Internet. Tools are available to enable this. Check with your infosec and IT departments before using them.   
    
 ## Test the app
 * Fill in the PowerForm and sign it as the new partner. Use a valid email address.
