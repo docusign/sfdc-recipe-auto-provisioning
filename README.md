@@ -81,6 +81,8 @@ Record the webhook listener url. You'll use it in the next step: *Create a Conne
 Make the application available to the internet so it can receive incoming webhook entries from DocuSign:
 
 1. install [ngrok](https://ngrok.com)
+1. **Important note:** ngrok enables anyone on the internet to bypass your firewall and directly access your machine. 
+   It is imperative that you consult with your infosec or IT department before using it!
 1. Start ngrok: `ngrok http 5000`  # ngrok will create a unique forwarding address on the internet. That address will forward to port 5000 on your machine.
 1. Test the address that ngrok gives you (eg https://ff34aaaa.ngrok.io) in your browser. You should see the app.
 1. Record the address. You'll use it in the next step.
