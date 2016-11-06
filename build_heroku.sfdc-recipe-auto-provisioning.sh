@@ -184,7 +184,7 @@ printf "Heroku temp repo: %s\n" $RECIPE_REPO_ABS
 echo ""
 echo "The Heroku app name is $HEROKU_NAME"
 echo "To tail the log use command heroku logs --tail --app $HEROKU_NAME"
-echo "Web hook address for configuring DocuSign Connect:  https://${HEROKU_NAME}.herokuapp.com/webhook_php"
+echo "Web hook address for configuring DocuSign Connect:  https://${HEROKU_NAME}.herokuapp.com/webhook"
 echo ""
 heroku logs --tail
 
