@@ -16,5 +16,5 @@ beautifulsoup4==4.4.1
 lxml==3.5.0
 iso8601==0.1.11
 simple-salesforce==0.70
-pyOpenSSL==16.1.0
+pyOpenSSL==17.5.0
 requests==2.11.1 
