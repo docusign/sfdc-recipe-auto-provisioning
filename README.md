@@ -1,4 +1,4 @@
-# DocuSign SFDC Recipe: Auto-provision Community Cloud Members
+﻿# DocuSign SFDC Recipe: Auto-provision Community Cloud Members
 
 This repo contains a Python Flask application that demonstrates a Salesforce (SFDC) auto-provisioning use case:
 
@@ -21,7 +21,7 @@ This repo contains a Python Flask application that demonstrates a Salesforce (SF
 [Create and configure the partner community on Salesforce.](docs/create_sfdc_community.md) This step includes:
 
 * Creating a Salesforce Developer Environment
-* Installing DocuSign for Salesforce
+* Installing DocuSign eSignature for Salesforce
 * Configuring a Salesforce Partner Community
 
 ### Step 2. Create the DocuSign Powerform
