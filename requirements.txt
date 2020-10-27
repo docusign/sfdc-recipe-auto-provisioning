@@ -1,5 +1,5 @@
 certifi==2015.11.20.1
-Flask==0.12.3
+Flask==1.0
 Flask-AutoIndex==0.6
 flask-heroku==0.1.9
 Flask-Silk==0.2
