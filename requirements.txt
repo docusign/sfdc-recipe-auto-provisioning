@@ -17,4 +17,4 @@ lxml==3.5.0
 iso8601==0.1.11
 simple-salesforce==0.70
 pyOpenSSL==17.5.0
-requests==2.11.1 
+requests==2.20.0 
