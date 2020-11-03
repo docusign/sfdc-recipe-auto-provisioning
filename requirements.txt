@@ -7,7 +7,7 @@ Flask-WTF==0.12
 future==0.15.2
 gunicorn==19.9.0
 itsdangerous==0.24
-Jinja2==2.8
+Jinja2==2.10.1
 MarkupSafe==0.23
 Werkzeug==0.15.3
 wheel==0.26.0
