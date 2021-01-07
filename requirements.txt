@@ -13,7 +13,7 @@ Werkzeug==0.15.3
 wheel==0.26.0
 WTForms==2.1
 beautifulsoup4==4.4.1
-lxml==3.5.0
+lxml==4.6.2
 iso8601==0.1.11
 simple-salesforce==0.70
 pyOpenSSL==17.5.0
